@@ -10,6 +10,8 @@ namespace TareaVeterinaria
     {
         static void Main(string[] args)
         {
+            Worker worker = new Worker();
+            worker.worker();
         }
     }
 }
