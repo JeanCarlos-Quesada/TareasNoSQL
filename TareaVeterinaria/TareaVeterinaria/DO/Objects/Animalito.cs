@@ -13,15 +13,23 @@ namespace DO.Objects
     {
         [BsonId]
         public ObjectId AnimalitoId { get; set; }
+
         [BsonElement("nombre")]
         public string Nombre { get; set; }
+
         [BsonElement("tipo")]
         public string Tipo { get; set; }
+
         [BsonElement("fechaNacimiento")]
-        public DateTime FechaNacimiento { get; set; }//22/01/2020
+        public DateTime FechaNacimiento { get; set; }
+
         [BsonExtraElements]
         public BsonDocument Metadata { get; set; }
+
         [BsonElement("propietario")]
         public Propietario ElPropietario { get; set; }
+
+        [BsonElement("vacunas")]
+        public IList<Vacunas> Vacunas { get; set; }
     }
 }

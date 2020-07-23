@@ -13,8 +13,10 @@ namespace DO.Objects
     {
         [BsonElement("proveedor")]
         public string Proveedor { get; set; }
+
         [BsonElement("numero")]
         public int NumeroTelefonico { get; set; }
+
         [BsonExtraElements]
         public BsonDocument Metadata { get; set; }
     }

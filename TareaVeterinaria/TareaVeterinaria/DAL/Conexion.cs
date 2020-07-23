@@ -35,7 +35,25 @@ namespace DAL
             return elResultado;
         }
 
-        
+        public IList<Animalito> ListeAnimalitosPorTipoVacuna(String tipo)
+        {
+            var laBaseDeDatos = ConectarConBaseDeDatos();
+            var collection = laBaseDeDatos.GetCollection<Animalito>("Animalitos");
+            var expresssionFilter = Builders<Animalito>.Filter.ElemMatch(s => s.Vacunas, x => x.tipo == tipo);
+            var elResultado = collection.Find(expresssionFilter).ToList();
+            return elResultado;
+        }
+
+        public IList<Animalito> ListeAnimalitosPorEfectoSecundario(String efectoSecundario)
+        {
+            var laBaseDeDatos = ConectarConBaseDeDatos();
+            var collection = laBaseDeDatos.GetCollection<Animalito>("Animalitos");
+            var expresssionFilter = Builders<Animalito>.Filter.ElemMatch(s => s.Vacunas, x => x.efectosSecundarios.Contains(efectoSecundario));
+            var elResultado = collection.Find(expresssionFilter).ToList();
+            return elResultado;
+        }
+
+
 
         public IList<Animalito> ListarAnimalitosPorEdad(DateTime fechaInicial, DateTime fechaFinal)//22/07/2019
         {

@@ -21,7 +21,6 @@ namespace DO.Objects
         public BsonDocument Metadata { get; set; }
 
         [BsonElement("contactosTelefonicos")]
-        //public ContactoTelefonico[] LosContactos { get; set; }
         public IList<ContactoTelefonico> LosContactos { get; set; }
 
     }

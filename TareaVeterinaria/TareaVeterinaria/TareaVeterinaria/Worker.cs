@@ -27,6 +27,12 @@ namespace TareaVeterinaria
                     case "3":
                         ListeAnimalitosPorTelefono();
                         break;
+                    case "4":
+                        ListeAnimalitosPorTipoVacuna();
+                        break;
+                    case "5":
+                        ListeAnimalitosPorEfectoSecundario();
+                        break;
                     default:
                         break;
                 }
@@ -50,6 +56,25 @@ namespace TareaVeterinaria
             var laListaDeAnimalitos = client.ListeAnimalitosPorTelefono(Int32.Parse(telefono));
             ImprimirListadoDeAnimalitos(laListaDeAnimalitos);
         }
+
+        private void ListeAnimalitosPorTipoVacuna()
+        {
+            Console.Write("Digite el tipo de vacuna: ");
+            var tipo = Console.ReadLine();
+            var client = new DAL.Conexion();
+            var laListaDeAnimalitos = client.ListeAnimalitosPorTipoVacuna(tipo);
+            ImprimirListadoDeAnimalitos(laListaDeAnimalitos);
+        }
+
+        private void ListeAnimalitosPorEfectoSecundario()
+        {
+            Console.Write("Digite el efecto secundario: ");
+            var efectoSecundario = Console.ReadLine();
+            var client = new DAL.Conexion();
+            var laListaDeAnimalitos = client.ListeAnimalitosPorEfectoSecundario(efectoSecundario);
+            ImprimirListadoDeAnimalitos(laListaDeAnimalitos);
+        }
+        
 
         //private void ListeAnimalitosPorEdad()
         //{
@@ -83,6 +108,8 @@ namespace TareaVeterinaria
             Console.WriteLine("1. Listado de animalitos por email aproximado del propietario.");
             Console.WriteLine("2. Listar por rango de edad.");
             Console.WriteLine("3. Listar por número exacto del propietario.");
+            Console.WriteLine("4. Listar por tipo vacuna.");
+            Console.WriteLine("5. Listar por efecto secundario.");
             Console.WriteLine("X.  Salir");
         }
 
