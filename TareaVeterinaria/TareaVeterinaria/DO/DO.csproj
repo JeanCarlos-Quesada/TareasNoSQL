@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Objects\Animalito.cs" />
-    <Compile Include="Objects\BsonIgnoreExtraElementsAttribute.cs" />
     <Compile Include="Objects\ContactoTelefonico.cs" />
     <Compile Include="Objects\Propietario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -26,12 +26,22 @@ namespace DAL
             return elResultado;
         }
 
-        .FechaNacimiento.Year - DateTime.Now.Year) ) && ((s.FechaNacimiento.Year - DateTime.Now.Year) <= )
-        public IList<Animalito> ListarAnimalitosPorEdad(int edadInicial, int edadFinal)//22/07/2019
+        public IList<Animalito> ListeAnimalitosPorTelefono(int telefono)
         {
             var laBaseDeDatos = ConectarConBaseDeDatos();
             var collection = laBaseDeDatos.GetCollection<Animalito>("Animalitos");
-            var expresssionFilter = Builders<Animalito>.Filter.Where(s => ((DateTime.Compare(s.FechaNacimiento,DateTime.Now)) >= edadInicial) && ((DateTime.Compare(s.FechaNacimiento, DateTime.Now)) <= edadFinal));
+            var expresssionFilter = Builders<Animalito>.Filter.ElemMatch(s => s.ElPropietario.LosContactos, x => x.NumeroTelefonico == telefono);
+            var elResultado = collection.Find(expresssionFilter).ToList();
+            return elResultado;
+        }
+
+        
+
+        public IList<Animalito> ListarAnimalitosPorEdad(DateTime fechaInicial, DateTime fechaFinal)//22/07/2019
+        {
+            var laBaseDeDatos = ConectarConBaseDeDatos();
+            var collection = laBaseDeDatos.GetCollection<Animalito>("Animalitos");
+            var expresssionFilter = Builders<Animalito>.Filter.Where(s => s.FechaNacimiento.Date >= fechaInicial && s.FechaNacimiento.Date <= fechaFinal);
             var elResultado = collection.Find(expresssionFilter).ToList();
             return elResultado;
         }

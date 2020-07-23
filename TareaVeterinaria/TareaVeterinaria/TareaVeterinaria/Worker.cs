@@ -22,10 +22,10 @@ namespace TareaVeterinaria
                         ListeAnimalitosPorEmailAproximado();
                         break;
                     case "2":
-                        //ListeTodosLosAnimalitos();
+                        //ListeAnimalitosPorEdad();
                         break;
                     case "3":
-                        //ListeAnimalitosPorNombre();
+                        ListeAnimalitosPorTelefono();
                         break;
                     default:
                         break;
@@ -41,6 +41,27 @@ namespace TareaVeterinaria
             var laListaDeAnimalitos = client.ListarAnimalitosPorEmailAproximado(elNombreDelAnimalito);
             ImprimirListadoDeAnimalitos(laListaDeAnimalitos);
         }
+
+        private void ListeAnimalitosPorTelefono()
+        {
+            Console.Write("Digite el telefono del propietario: ");
+            var telefono = Console.ReadLine();
+            var client = new DAL.Conexion();
+            var laListaDeAnimalitos = client.ListeAnimalitosPorTelefono(Int32.Parse(telefono));
+            ImprimirListadoDeAnimalitos(laListaDeAnimalitos);
+        }
+
+        //private void ListeAnimalitosPorEdad()
+        //{
+        //    Console.Write("Digite la fecha Inicial (dd/mm/yyyy): ");
+        //    var fechaInicio = Console.ReadLine();
+        //    Console.Write("Digite la fecha Final (dd/mm/yyyy): ");
+        //    var fechaFinal = Console.ReadLine();
+        //    var client = new DAL.Conexion();
+        //    var laListaDeAnimalitos = client.ListarAnimalitosPorEdad(fechaInicio, fechaFinal);
+        //    ImprimirListadoDeAnimalitos(laListaDeAnimalitos);
+        //}
+
 
         private void ImprimirListadoDeAnimalitos(IList<Animalito> laListaDeAnimalitos)
         {
@@ -60,8 +81,8 @@ namespace TareaVeterinaria
         {
             Console.WriteLine("Menu Principal");
             Console.WriteLine("1. Listado de animalitos por email aproximado del propietario.");
-            Console.WriteLine("2. Listar todos los animalitos.");
-            Console.WriteLine("3. Listar los animalitos por nombre.");
+            Console.WriteLine("2. Listar por rango de edad.");
+            Console.WriteLine("3. Listar por número exacto del propietario.");
             Console.WriteLine("X.  Salir");
         }
 
