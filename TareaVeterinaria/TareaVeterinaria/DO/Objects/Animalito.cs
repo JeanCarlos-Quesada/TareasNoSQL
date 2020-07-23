@@ -18,7 +18,7 @@ namespace DO.Objects
         [BsonElement("tipo")]
         public string Tipo { get; set; }
         [BsonElement("fechaNacimiento")]
-        public DateTime FechaNacimiento { get; set; }
+        public DateTime FechaNacimiento { get; set; }//22/01/2020
         [BsonExtraElements]
         public BsonDocument Metadata { get; set; }
         [BsonElement("propietario")]

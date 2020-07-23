@@ -1,0 +1,9 @@
+E:\TareaNoSQL\TareaVeterinaria\TareaVeterinaria\DO\bin\Debug\DO.dll
+E:\TareaNoSQL\TareaVeterinaria\TareaVeterinaria\DO\bin\Debug\DO.pdb
+E:\TareaNoSQL\TareaVeterinaria\TareaVeterinaria\DO\bin\Debug\MongoDB.Bson.dll
+E:\TareaNoSQL\TareaVeterinaria\TareaVeterinaria\DO\bin\Debug\MongoDB.Bson.xml
+E:\TareaNoSQL\TareaVeterinaria\TareaVeterinaria\DO\obj\Debug\DO.csprojAssemblyReference.cache
+E:\TareaNoSQL\TareaVeterinaria\TareaVeterinaria\DO\obj\Debug\DO.csproj.CoreCompileInputs.cache
+E:\TareaNoSQL\TareaVeterinaria\TareaVeterinaria\DO\obj\Debug\DO.csproj.CopyComplete
+E:\TareaNoSQL\TareaVeterinaria\TareaVeterinaria\DO\obj\Debug\DO.dll
+E:\TareaNoSQL\TareaVeterinaria\TareaVeterinaria\DO\obj\Debug\DO.pdb

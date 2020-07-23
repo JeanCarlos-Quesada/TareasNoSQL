@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DO.Objects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,13 +19,13 @@ namespace TareaVeterinaria
                 switch (laOpcion)
                 {
                     case "1":
-                        ListeLasColecciones();
+                        ListeAnimalitosPorEmailAproximado();
                         break;
                     case "2":
-                        ListeTodosLosAnimalitos();
+                        //ListeTodosLosAnimalitos();
                         break;
                     case "3":
-                        ListeAnimalitosPorNombre();
+                        //ListeAnimalitosPorNombre();
                         break;
                     default:
                         break;
@@ -32,10 +33,33 @@ namespace TareaVeterinaria
             }
         }
 
+        private void ListeAnimalitosPorEmailAproximado()
+        {
+            Console.Write("Digite el email del propietario: ");
+            var elNombreDelAnimalito = Console.ReadLine();
+            var client = new DAL.Conexion();
+            var laListaDeAnimalitos = client.ListarAnimalitosPorEmailAproximado(elNombreDelAnimalito);
+            ImprimirListadoDeAnimalitos(laListaDeAnimalitos);
+        }
+
+        private void ImprimirListadoDeAnimalitos(IList<Animalito> laListaDeAnimalitos)
+        {
+            if (laListaDeAnimalitos.Count > 0)
+            {
+                Console.WriteLine("Lista de todos los animalitos:");
+                foreach (var animalito in laListaDeAnimalitos)
+                {
+                    Console.WriteLine(string.Format("Id: {2}; Nombre: {0}; Tipo: {1}", animalito.Nombre, animalito.Tipo, animalito.AnimalitoId.ToString()));
+                }
+            }
+            else
+                Console.WriteLine("No se encontró ningún animalito.");
+        }
+
         private void DesplegarMenu()
         {
             Console.WriteLine("Menu Principal");
-            Console.WriteLine("1. Listar las colecciones.");
+            Console.WriteLine("1. Listado de animalitos por email aproximado del propietario.");
             Console.WriteLine("2. Listar todos los animalitos.");
             Console.WriteLine("3. Listar los animalitos por nombre.");
             Console.WriteLine("X.  Salir");
