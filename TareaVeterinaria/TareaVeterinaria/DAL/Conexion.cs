@@ -26,6 +26,17 @@ namespace DAL
             return elResultado;
         }
 
+        public IList<Animalito> ListarAnimalitosPorEdad(int edadInicial, int edadFinal)
+        {
+            DateTime fechaFinal = DateTime.Now.AddYears(-edadInicial).Date;
+            DateTime fechaInicial = new DateTime(DateTime.Now.AddYears(-edadFinal).Year, 1, 1).Date;
+            var laBaseDeDatos = ConectarConBaseDeDatos();
+            var collection = laBaseDeDatos.GetCollection<Animalito>("Animalitos");
+            var expresssionFilter = Builders<Animalito>.Filter.Where(s => s.FechaNacimiento >= fechaInicial && s.FechaNacimiento <= fechaFinal);
+            var elResultado = collection.Find(expresssionFilter).ToList();
+            return elResultado;
+        }
+
         public IList<Animalito> ListeAnimalitosPorTelefono(int telefono)
         {
             var laBaseDeDatos = ConectarConBaseDeDatos();
@@ -53,15 +64,5 @@ namespace DAL
             return elResultado;
         }
 
-
-
-        public IList<Animalito> ListarAnimalitosPorEdad(DateTime fechaInicial, DateTime fechaFinal)//22/07/2019
-        {
-            var laBaseDeDatos = ConectarConBaseDeDatos();
-            var collection = laBaseDeDatos.GetCollection<Animalito>("Animalitos");
-            var expresssionFilter = Builders<Animalito>.Filter.Where(s => s.FechaNacimiento.Date >= fechaInicial && s.FechaNacimiento.Date <= fechaFinal);
-            var elResultado = collection.Find(expresssionFilter).ToList();
-            return elResultado;
-        }
     }
 }

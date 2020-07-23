@@ -22,7 +22,7 @@ namespace TareaVeterinaria
                         ListeAnimalitosPorEmailAproximado();
                         break;
                     case "2":
-                        //ListeAnimalitosPorEdad();
+                        ListeAnimalitosPorEdad();
                         break;
                     case "3":
                         ListeAnimalitosPorTelefono();
@@ -39,12 +39,25 @@ namespace TareaVeterinaria
             }
         }
 
+
         private void ListeAnimalitosPorEmailAproximado()
         {
             Console.Write("Digite el email del propietario: ");
             var elNombreDelAnimalito = Console.ReadLine();
             var client = new DAL.Conexion();
             var laListaDeAnimalitos = client.ListarAnimalitosPorEmailAproximado(elNombreDelAnimalito);
+            ImprimirListadoDeAnimalitos(laListaDeAnimalitos);
+        }
+
+
+        private void ListeAnimalitosPorEdad()
+        {
+            Console.Write("Digite la edad inicial: ");
+            var edadInicio = Int32.Parse(Console.ReadLine());
+            Console.Write("Digite la edad final: ");
+            var edadFinal = Int32.Parse(Console.ReadLine());
+            var client = new DAL.Conexion();
+            var laListaDeAnimalitos = client.ListarAnimalitosPorEdad(edadInicio, edadFinal);
             ImprimirListadoDeAnimalitos(laListaDeAnimalitos);
         }
 
@@ -74,20 +87,7 @@ namespace TareaVeterinaria
             var laListaDeAnimalitos = client.ListeAnimalitosPorEfectoSecundario(efectoSecundario);
             ImprimirListadoDeAnimalitos(laListaDeAnimalitos);
         }
-        
-
-        //private void ListeAnimalitosPorEdad()
-        //{
-        //    Console.Write("Digite la fecha Inicial (dd/mm/yyyy): ");
-        //    var fechaInicio = Console.ReadLine();
-        //    Console.Write("Digite la fecha Final (dd/mm/yyyy): ");
-        //    var fechaFinal = Console.ReadLine();
-        //    var client = new DAL.Conexion();
-        //    var laListaDeAnimalitos = client.ListarAnimalitosPorEdad(fechaInicio, fechaFinal);
-        //    ImprimirListadoDeAnimalitos(laListaDeAnimalitos);
-        //}
-
-
+       
         private void ImprimirListadoDeAnimalitos(IList<Animalito> laListaDeAnimalitos)
         {
             if (laListaDeAnimalitos.Count > 0)
