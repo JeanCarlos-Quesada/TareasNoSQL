@@ -64,5 +64,36 @@ namespace DAL
                 fs.Close();
             }
         }
+
+        public ObjectId SubirFileAsync(String archivo,String fileName ,MetadataDeFotos laMetadata)
+        {
+            var database = ConectarConBaseDeDatos();
+            IGridFSBucket bucket = new GridFSBucket(database);
+            Stream strem = File.Open(archivo, FileMode.Open);
+            var options = new GridFSUploadOptions()
+            {
+                Metadata = new BsonDocument
+                {
+                    {"descripcion",laMetadata.Descripcion},
+                    {"fechaYHora",laMetadata.FechaYHora }
+                }
+            };
+
+            var id = bucket.UploadFromStream(fileName, strem, options);
+            return id;
+        }
+
+        public void UpdateAnimal(String nombreAnimal, ObjectId idFoto)
+        {
+            var animal = ListarAnimalitosPorNombre(nombreAnimal).Where(s => s.Nombre == nombreAnimal).FirstOrDefault();
+            animal.Fotos.Add(idFoto);
+            var database = ConectarConBaseDeDatos();
+            var collection = database.GetCollection<Animalito>("animalitos");
+            var builder = Builders<Animalito>.Filter;
+            var filter = builder.Eq(s => s.Nombre, nombreAnimal);
+            var update = Builders<Animalito>.Update
+             .Set(d => d.Fotos, animal.Fotos);
+            UpdateResult result = collection.UpdateOne(filter, update);
+        }
     }
 }
