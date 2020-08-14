@@ -109,6 +109,7 @@ namespace Trabajo_En_Clases_07_08_2020
             Console.WriteLine("1. Actualizar Nombre Animal");
             Console.WriteLine("2.  Actualizar Nombre y Emmail Propietario");
             Console.WriteLine("3.  Agregar Contacto");
+            Console.WriteLine("4.  Eliminar Contacto");
             Console.WriteLine("X.  Salir");
         }
 

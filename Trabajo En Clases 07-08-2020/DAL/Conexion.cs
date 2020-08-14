@@ -78,5 +78,19 @@ namespace DAL
              .Set(d => d.ElPropietario.LosContactos, animal.ElPropietario.LosContactos);
             UpdateResult result = collection.UpdateOne(filter, update);
         }
+
+        public void DeleteContactos(String numeroTelefonico, String nombreAnimal)
+        {
+            int aux = Int32.Parse(numeroTelefonico);
+            var animal = AnimalitosPorNombre(nombreAnimal);
+            animal.ElPropietario.LosContactos.Remove(animal.ElPropietario.LosContactos.Where(s => s.NumeroTelefonico == aux).FirstOrDefault());
+            var database = ConectarConBaseDeDatos();
+            var collection = database.GetCollection<Animalito>("Animalitos");
+            var builder = Builders<Animalito>.Filter;
+            var filter = builder.Eq(s => s.Nombre, nombreAnimal);
+            var update = Builders<Animalito>.Update
+             .Set(d => d.ElPropietario.LosContactos, animal.ElPropietario.LosContactos);
+            UpdateResult result = collection.UpdateOne(filter, update);
+        }
     }
 }
