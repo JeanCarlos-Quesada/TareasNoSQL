@@ -92,5 +92,21 @@ namespace DAL
              .Set(d => d.ElPropietario.LosContactos, animal.ElPropietario.LosContactos);
             UpdateResult result = collection.UpdateOne(filter, update);
         }
+
+        public void AgregarVacuna(String proveedor, String numeroTelefonico, String nombreAnimal)
+        {
+            var animal = AnimalitosPorNombre(nombreAnimal);
+            ContactoTelefonico contacto = new ContactoTelefonico();
+            contacto.Proveedor = proveedor;
+            contacto.NumeroTelefonico = Int32.Parse(numeroTelefonico);
+            animal.ElPropietario.LosContactos.Add(contacto);
+            var database = ConectarConBaseDeDatos();
+            var collection = database.GetCollection<Animalito>("Animalitos");
+            var builder = Builders<Animalito>.Filter;
+            var filter = builder.Eq(s => s.Nombre, nombreAnimal);
+            var update = Builders<Animalito>.Update
+             .Set(d => d.ElPropietario.LosContactos, animal.ElPropietario.LosContactos);
+            UpdateResult result = collection.UpdateOne(filter, update);
+        }
     }
 }

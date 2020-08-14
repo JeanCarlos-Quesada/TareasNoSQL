@@ -49,7 +49,25 @@ namespace Trabajo_En_Clases_07_08_2020
                         String proveedor = Console.ReadLine();
                         Console.WriteLine("Digite el nuevo telefono");
                         String telefono = Console.ReadLine();
-                        ActualizarProveedor(proveedor, telefono, nombreAnimalito);
+                        ActualizarContacto(proveedor, telefono, nombreAnimalito);
+                        break;
+                    case "4":
+                        ListeTodosLosAnimalitos();
+                        Console.WriteLine("Digite el nombre del animal que desea buscar");
+                        nombreAnimalito = Console.ReadLine();
+                        Animal(nombreAnimalito);
+                        Console.WriteLine("Digite el telefono que desea eliminar");
+                        telefono = Console.ReadLine();
+                        DeleteContacto(telefono, nombreAnimalito);
+                        break;
+                    case "5":
+                        ListeTodosLosAnimalitos();
+                        Console.WriteLine("Digite el nombre del animal que desea buscar");
+                        nombreAnimalito = Console.ReadLine();
+                        Animal(nombreAnimalito);
+                        Console.WriteLine("Digite el telefono que desea eliminar");
+                        telefono = Console.ReadLine();
+                        DeleteContacto(telefono, nombreAnimalito);
                         break;
                     default:
                         break;
@@ -83,10 +101,16 @@ namespace Trabajo_En_Clases_07_08_2020
             client.UpdateNombrePropietario(nombrePro, emmailPro,nombreAnimal);
         }
 
-        private void ActualizarProveedor(String proveedor, String telefono, String nombreAnimal)
+        private void ActualizarContacto(String proveedor, String telefono, String nombreAnimal)
         {
             var client = new Conexion();
             client.UpdateContactos(proveedor, telefono, nombreAnimal);
+        }
+
+        private void DeleteContacto(String telefono, String nombreAnimal)
+        {
+            var client = new Conexion();
+            client.DeleteContactos(telefono, nombreAnimal);
         }
 
         private void ImprimirListadoDeAnimalitos(IList<Animalito> laListaDeAnimalitos)
