@@ -31,5 +31,8 @@ namespace DO.Objects
 
         [BsonElement("fotos")]
         public BsonArray Fotos { get; set; }
+
+        [BsonElement("vacunas")]
+        public IList<Vacunas> Vacunas { get; set; }
     }
 }

@@ -28,6 +28,7 @@ namespace Trabajo_En_Clases_07_08_2020
                         Console.WriteLine("Digite el nuevo nombre del animal");
                         String nameNuevo = Console.ReadLine();
                         ActualizarNombre(nameNuevo, nameAnimalito);
+                        Animal(nameAnimalito);
                         break;
                     case "2":
                         ListeTodosLosAnimalitos();
@@ -39,6 +40,7 @@ namespace Trabajo_En_Clases_07_08_2020
                         Console.WriteLine("Digite el nuevo email del Propietario");
                         String emailPro = Console.ReadLine();
                         ActualizarPro(nombrePro, emailPro, nombreAnimalito);
+                        Animal(nombreAnimalito);
                         break;
                     case "3":
                         ListeTodosLosAnimalitos();
@@ -50,6 +52,7 @@ namespace Trabajo_En_Clases_07_08_2020
                         Console.WriteLine("Digite el nuevo telefono");
                         String telefono = Console.ReadLine();
                         ActualizarContacto(proveedor, telefono, nombreAnimalito);
+                        Contactos(nombreAnimalito);
                         break;
                     case "4":
                         ListeTodosLosAnimalitos();
@@ -59,15 +62,22 @@ namespace Trabajo_En_Clases_07_08_2020
                         Console.WriteLine("Digite el telefono que desea eliminar");
                         telefono = Console.ReadLine();
                         DeleteContacto(telefono, nombreAnimalito);
+                        Contactos(nombreAnimalito);
                         break;
                     case "5":
                         ListeTodosLosAnimalitos();
                         Console.WriteLine("Digite el nombre del animal que desea buscar");
                         nombreAnimalito = Console.ReadLine();
                         Animal(nombreAnimalito);
-                        Console.WriteLine("Digite el telefono que desea eliminar");
-                        telefono = Console.ReadLine();
-                        DeleteContacto(telefono, nombreAnimalito);
+                        Console.WriteLine("Digite el tipo de vacuna");
+                        String tipo = Console.ReadLine();
+                        Console.WriteLine("Efecto Secundario");
+                        String efectoSecundario = Console.ReadLine();
+                        AgregarVacuna(tipo, efectoSecundario, nombreAnimalito);
+                        Vacunas(nombreAnimalito);
+                        break;
+                    case "6":
+                        ListeTodosLosAnimalitos();
                         break;
                     default:
                         break;
@@ -86,7 +96,29 @@ namespace Trabajo_En_Clases_07_08_2020
         {
             var client = new Conexion();
             var animalito = client.AnimalitosPorNombre(nombre);
-            Console.WriteLine(string.Format("Id: {1}; Nombre: {0};", animalito.Nombre, animalito.AnimalitoId.ToString()));
+            Console.WriteLine(string.Format("Id: {1}; Nombre: {0}; Nombre Propietario: {2}; Email Propietario: {3};",
+                animalito.Nombre, animalito.AnimalitoId.ToString(), animalito.ElPropietario.Nombre, animalito.ElPropietario.DireccionElectronica));
+        }
+
+        private void Contactos(String nombre)
+        {
+            var client = new Conexion();
+            var animalito = client.AnimalitosPorNombre(nombre);
+            foreach (var cotactos in animalito.ElPropietario.LosContactos)
+            {
+                Console.WriteLine(string.Format("Proveedor: {0}; Telefono: {1}",
+                    cotactos.Proveedor, cotactos.NumeroTelefonico));
+            }
+        }
+
+        private void Vacunas(String nombre)
+        {
+            var client = new Conexion();
+            var animalito = client.AnimalitosPorNombre(nombre);
+            foreach (var vacuna in animalito.Vacunas) {
+                Console.WriteLine(string.Format("Fecha: {0}; tipo: {1}; Efectos Secundario: {2}",
+                    vacuna.fecha, vacuna.tipo, String.Join(" / ", vacuna.efectosSecundarios)));
+            }
         }
 
         private void ActualizarNombre(String nombreNuevo, String nombreAnterior)
@@ -113,6 +145,12 @@ namespace Trabajo_En_Clases_07_08_2020
             client.DeleteContactos(telefono, nombreAnimal);
         }
 
+        private void AgregarVacuna(String tipo, String efectoSecundario, String nombreAnimal)
+        {
+            var client = new Conexion();
+            client.AgregarVacuna(tipo, efectoSecundario, nombreAnimal);
+        }
+
         private void ImprimirListadoDeAnimalitos(IList<Animalito> laListaDeAnimalitos)
         {
             if (laListaDeAnimalitos.Count > 0)
@@ -134,6 +172,8 @@ namespace Trabajo_En_Clases_07_08_2020
             Console.WriteLine("2.  Actualizar Nombre y Emmail Propietario");
             Console.WriteLine("3.  Agregar Contacto");
             Console.WriteLine("4.  Eliminar Contacto");
+            Console.WriteLine("5.  Agregar Vacuna");
+            Console.WriteLine("6.  Lista Animales");
             Console.WriteLine("X.  Salir");
         }
 

@@ -93,19 +93,22 @@ namespace DAL
             UpdateResult result = collection.UpdateOne(filter, update);
         }
 
-        public void AgregarVacuna(String proveedor, String numeroTelefonico, String nombreAnimal)
+        public void AgregarVacuna(String tipo, String efectoSecundario, String nombreAnimal)
         {
             var animal = AnimalitosPorNombre(nombreAnimal);
-            ContactoTelefonico contacto = new ContactoTelefonico();
-            contacto.Proveedor = proveedor;
-            contacto.NumeroTelefonico = Int32.Parse(numeroTelefonico);
-            animal.ElPropietario.LosContactos.Add(contacto);
+            Vacunas vacunas = new Vacunas();
+            vacunas.fecha = DateTime.Now;
+            vacunas.tipo = tipo;
+            List<String> efectosSecundarios = new List<string>();
+            efectosSecundarios.Add(efectoSecundario);
+            vacunas.efectosSecundarios = efectosSecundarios;
+            animal.Vacunas.Add(vacunas);
             var database = ConectarConBaseDeDatos();
             var collection = database.GetCollection<Animalito>("Animalitos");
             var builder = Builders<Animalito>.Filter;
             var filter = builder.Eq(s => s.Nombre, nombreAnimal);
             var update = Builders<Animalito>.Update
-             .Set(d => d.ElPropietario.LosContactos, animal.ElPropietario.LosContactos);
+             .Set(d => d.Vacunas, animal.Vacunas);
             UpdateResult result = collection.UpdateOne(filter, update);
         }
     }

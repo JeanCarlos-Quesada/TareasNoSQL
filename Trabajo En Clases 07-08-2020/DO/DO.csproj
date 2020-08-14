@@ -48,6 +48,7 @@
     <Compile Include="Objects\ContactoTelefonico.cs" />
     <Compile Include="Objects\Fotos.cs" />
     <Compile Include="Objects\Propietario.cs" />
+    <Compile Include="Objects\Vacunas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
