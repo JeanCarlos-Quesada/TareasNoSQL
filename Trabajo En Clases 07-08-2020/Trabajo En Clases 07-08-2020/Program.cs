@@ -10,7 +10,8 @@ namespace Trabajo_En_Clases_07_08_2020
     {
         static void Main(string[] args)
         {
-            
+            Worker worker = new Worker();
+            worker.worker();
         }
     }
 }

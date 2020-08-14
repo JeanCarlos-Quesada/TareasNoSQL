@@ -21,17 +21,15 @@ namespace Trabajo_En_Clases_07_08_2020
                 switch (laOpcion)
                 {
                     case "1":
-                        ListeTodosLosAnimalitos();
                         Console.WriteLine("Digite el nombre del animal que desea buscar");
                         String nameAnimalito = Console.ReadLine();
                         Animal(nameAnimalito);
                         Console.WriteLine("Digite el nuevo nombre del animal");
                         String nameNuevo = Console.ReadLine();
                         ActualizarNombre(nameNuevo, nameAnimalito);
-                        Animal(nameAnimalito);
+                        Animal(nameNuevo);
                         break;
                     case "2":
-                        ListeTodosLosAnimalitos();
                         Console.WriteLine("Digite el nombre del animal que desea buscar");
                         String nombreAnimalito = Console.ReadLine();
                         Animal(nombreAnimalito);
@@ -43,10 +41,9 @@ namespace Trabajo_En_Clases_07_08_2020
                         Animal(nombreAnimalito);
                         break;
                     case "3":
-                        ListeTodosLosAnimalitos();
                         Console.WriteLine("Digite el nombre del animal que desea buscar");
                         nombreAnimalito = Console.ReadLine();
-                        Animal(nombreAnimalito);
+                        Contactos(nombreAnimalito);
                         Console.WriteLine("Digite el nuevo proveedor");
                         String proveedor = Console.ReadLine();
                         Console.WriteLine("Digite el nuevo telefono");
@@ -55,20 +52,18 @@ namespace Trabajo_En_Clases_07_08_2020
                         Contactos(nombreAnimalito);
                         break;
                     case "4":
-                        ListeTodosLosAnimalitos();
                         Console.WriteLine("Digite el nombre del animal que desea buscar");
                         nombreAnimalito = Console.ReadLine();
-                        Animal(nombreAnimalito);
+                        Contactos(nombreAnimalito);
                         Console.WriteLine("Digite el telefono que desea eliminar");
                         telefono = Console.ReadLine();
                         DeleteContacto(telefono, nombreAnimalito);
                         Contactos(nombreAnimalito);
                         break;
                     case "5":
-                        ListeTodosLosAnimalitos();
                         Console.WriteLine("Digite el nombre del animal que desea buscar");
                         nombreAnimalito = Console.ReadLine();
-                        Animal(nombreAnimalito);
+                        Vacunas(nombreAnimalito);
                         Console.WriteLine("Digite el tipo de vacuna");
                         String tipo = Console.ReadLine();
                         Console.WriteLine("Efecto Secundario");
