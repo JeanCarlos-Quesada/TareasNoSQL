@@ -38,7 +38,18 @@ namespace Trabajo_En_Clases_07_08_2020
                         String nombrePro = Console.ReadLine();
                         Console.WriteLine("Digite el nuevo email del Propietario");
                         String emailPro = Console.ReadLine();
-
+                        ActualizarPro(nombrePro, emailPro, nombreAnimalito);
+                        break;
+                    case "3":
+                        ListeTodosLosAnimalitos();
+                        Console.WriteLine("Digite el nombre del animal que desea buscar");
+                        nombreAnimalito = Console.ReadLine();
+                        Animal(nombreAnimalito);
+                        Console.WriteLine("Digite el nuevo proveedor");
+                        String proveedor = Console.ReadLine();
+                        Console.WriteLine("Digite el nuevo telefono");
+                        String telefono = Console.ReadLine();
+                        ActualizarProveedor(proveedor, telefono, nombreAnimalito);
                         break;
                     default:
                         break;
@@ -72,6 +83,11 @@ namespace Trabajo_En_Clases_07_08_2020
             client.UpdateNombrePropietario(nombrePro, emmailPro,nombreAnimal);
         }
 
+        private void ActualizarProveedor(String proveedor, String telefono, String nombreAnimal)
+        {
+            var client = new Conexion();
+            client.UpdateContactos(proveedor, telefono, nombreAnimal);
+        }
 
         private void ImprimirListadoDeAnimalitos(IList<Animalito> laListaDeAnimalitos)
         {
@@ -92,6 +108,7 @@ namespace Trabajo_En_Clases_07_08_2020
             Console.WriteLine("Menu Principal");
             Console.WriteLine("1. Actualizar Nombre Animal");
             Console.WriteLine("2.  Actualizar Nombre y Emmail Propietario");
+            Console.WriteLine("3.  Agregar Contacto");
             Console.WriteLine("X.  Salir");
         }
 
