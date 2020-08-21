@@ -104,7 +104,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Conection.cs" />
+    <Compile Include="Connection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -114,6 +114,12 @@
     <Content Include="Core\Compression\Snappy\lib\win\snappy32.dll" />
     <Content Include="Core\Compression\Snappy\lib\win\snappy64.dll" />
     <Content Include="Core\Compression\Zstandard\lib\win\libzstd.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DO\DO.csproj">
+      <Project>{9d462c92-beba-442a-a468-60cb5916c0b9}</Project>
+      <Name>DO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MongoDB.Libmongocrypt.1.0.0\build\MongoDB.Libmongocrypt.targets" Condition="Exists('..\packages\MongoDB.Libmongocrypt.1.0.0\build\MongoDB.Libmongocrypt.targets')" />

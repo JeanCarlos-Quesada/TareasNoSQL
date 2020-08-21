@@ -10,6 +10,8 @@ namespace Practica_para_Examen_Final
     {
         static void Main(string[] args)
         {
+            Worker worker = new Worker();
+            worker.worker();
         }
     }
 }
