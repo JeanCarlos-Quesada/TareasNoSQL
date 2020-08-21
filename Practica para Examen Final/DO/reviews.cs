@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DO
 {
-    public class reviews
+    public class Reviews
     {
         [BsonElement("_id")]
         public string _id { get; set; }

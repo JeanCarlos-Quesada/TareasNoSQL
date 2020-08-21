@@ -19,17 +19,11 @@ namespace DO
         [BsonElement("amenities")]
         public List<String> amenities { get; set; }
 
-        [BsonElement("reviews")]
-        public List<String> reviews { get; set; }
-
         [BsonElement("price")]
         public decimal price { get; set; }
 
-        [BsonElement("fotos")]
-        public BsonArray Fotos { get; set; }
-
         [BsonElement("reviews")]
-        public IList<reviews> Reviews { get; set; }
+        public IList<Reviews> reviews { get; set; }
 
         [BsonExtraElements]
         public BsonDocument Metadata { get; set; }
