@@ -24,7 +24,7 @@ namespace Practica_para_Examen_Final
                         BuscarPorNombre(name);
                         break;
                     case "2":
-                        Console.WriteLine("Digite el nombre del airbnb");
+                        Console.WriteLine("Digite el nombre del Amenities");
                         String facility = Console.ReadLine();
                         ConteinFacility(facility);
                         break;
@@ -144,7 +144,7 @@ namespace Practica_para_Examen_Final
             var client = new Connection();
             client.UpdateComments(newComentario, elNombreAirbnb, idReview);
 
-            Console.WriteLine("Se agrego la review");
+            Console.WriteLine("Se actualizo la review");
         }
 
         private void BuscarPorReviews(String nombreAirbnb)
@@ -173,7 +173,7 @@ namespace Practica_para_Examen_Final
             Console.WriteLine("3.  Listado de todos los registros por rango de precio.");
             Console.WriteLine("4.  Agregar Amenities");
             Console.WriteLine("5.  Agregar Review");
-            Console.WriteLine("6.  Lista Animales");
+            Console.WriteLine("6.  Actualizar Comentario de una Review");
             Console.WriteLine("X.  Salir");
         }
 
